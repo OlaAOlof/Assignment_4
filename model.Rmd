@@ -19,6 +19,7 @@ library(tidyverse)
 library(lubridate)
 library(modelr)
 library(broom)
+library(dplyr)
 ```
 
 # Modeller
@@ -46,12 +47,8 @@ Dessverre kjenne vi ikke arbeidsstyrken, men vi kan beregne den vha.:
 arbeidsstyrken = antall arb. ledige/arb. ledighetsprosent.
 
 ```{r}
-arblos <- arblos %>% 
-    mutate(
-        wf_K = (al_Kvinner/alp_Kvinner)*100,
-        wf_M = (al_Menn/alp_Menn)*100,
-        wf_KM = wf_K + wf_M
-    )
+arbos <- arblos %>% 
+    mutate(wf_K = (al_Kvinner/alp_Kvinner)*100, wf_M = (al_Menn/alp_Menn)*100, wf_KM = wf_K + wf_M)
 ```
 
 ```{r}
@@ -70,14 +67,19 @@ Vi skal starte med å lage et datasett med arbeidsstyrken (wf) for hele landet s
 
 Bruk data for januar hvert år til å beregne wf på landsbasis
 
+```{r wf}
+wf <- arblos
+```
+
+
 ```{r}
 # årlige data landet samlet
 wf <- arblos %>% 
     filter(mnd == 1) %>% 
     group_by(aar) %>% 
     summarise(
-        wf_K = sum(wf_K, na.rm = TRUE),
-        wf_M = sum(wf_M, na.rm = TRUE),
+        wf_K = (al_Kvinner/alp_Kvinner)*100,
+        wf_M = (al_Menn/alp_Menn)*100,
         wf_KM = wf_K + wf_M
     )
 ```
@@ -121,7 +123,7 @@ Vi vil nå se på arbeidsstyrke relativt til befolkning på landsbasis, dvs. wf_
 Plot dataen vha. geom_line() for de tre kategoriene. Bruk år som x-variabel.
 
 ```{r, echo=FALSE}
-wf %>% 
+wf %>%
   ggplot(wf, mapping = aes(x = år)) +
   geom_line(mapping = aes(y = wf_K/bef_K, color = "...")) +
   geom_line(mapping = aes(y = wf_M/bef_M, color = "darkblue")) +
