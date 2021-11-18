@@ -1,0 +1,25 @@
+---
+title: "Assignment 4"
+author:
+- Kevin Ha - 571821
+- Ola Andre Olofsson - 170745
+fontsize: 12pt
+linestrech: 1.5
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+  word_document: default
+lang: no-NB
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Mappestruktur
+
+	1. model.Rmd
+		a. Folder "data"
+			i. Notebook "get-ssb-data.Rmd" -> samle koden som henter dataene fra SSB og skriver dataene ut i 5 .csv filer
+			ii. Notebook "make-data-tidy.Rmd" -> leser inn ovennevnte
