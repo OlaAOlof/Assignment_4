@@ -19,6 +19,8 @@ library(readr)
 library(dplyr)
 library(tidyr)
 library(stringr)
+library(PxWebApiData)
+library(tidyverse)
 ```
 
 # Assignment 4;del 2; Tidy data
@@ -145,7 +147,15 @@ Hva som må fikses i`df_arbl_p_kjonn`:
 
 ```{r, echo=FALSE}
 # Fern (-2019) etc
-#df_arbl_p_kjonn$knavn <- 
+df_arbl_p_kjonn$knavn <- str_remove(
+  string = df_arbl_p_kjonn$knavn, 
+  pattern = fixed(" (-2019)"))
+df_arbl_p_kjonn$knavn <- str_remove(
+  string = df_arbl_p_kjonn$knavn, 
+  pattern = fixed(" (1992-2019)"))
+df_arbl_p_kjonn$knavn <- str_remove(
+  string = df_arbl_p_kjonn$knavn, 
+  pattern = fixed(" (1994-2019)"))
 ```
 
 ```{r}
@@ -165,7 +175,14 @@ print(arrange(df_arbl_p_kjonn, knr, knavn, aar, mnd, kjonn), n = 2)
 ### En observasjon per rekke
 
 ```{r, echo=FALSE}
-#df_arbl_p_kjonn <- 
+df_arbl_p_kjonn <- df_arbl_p_kjonn %>%
+    pivot_wider(
+    names_from = kjonn,
+    values_from = alp_k,
+    names_prefix = c("alp_", "alp_")
+  ) %>% 
+  mutate(aar = as.integer(aar),
+         mnd = as.integer(mnd))
 ```
 
 ```{r}
@@ -190,9 +207,30 @@ Gjør som ovenfor.
 
 ```{r, echo=FALSE}
 # Fikse navn
-#df_arbl$knavn <- 
-#df_arbl <- 
-#df_arbl <- 
+df_arbl$knavn <- str_remove(
+  string = df_arbl$knavn, 
+  pattern = fixed(" (-2019)"))
+df_arbl$knavn <- str_remove(
+  string = df_arbl$knavn, 
+  pattern = fixed(" (1992-2019)"))
+df_arbl$knavn <- str_remove(
+  string = df_arbl$knavn, 
+  pattern = fixed(" (1994-2019)"))
+
+df_arbl <- separate(
+  data = df_arbl, 
+  c('aar', 'mnd'), 
+  col = "tid", 
+  sep = "M")
+
+df_arbl <- df_arbl %>%
+    pivot_wider(
+    names_from = kjonn,
+    values_from = al,
+    names_prefix = c("al_", "al_")
+  ) %>% 
+  mutate(aar = as.integer(aar),
+         mnd = as.integer(mnd))
 ```
 
 Har du gjort det riktig skal `df_arbl` nå se slik ut.
