@@ -1,5 +1,0 @@
-"0","bef <- bef %>% "
-"0","  mutate("
-"0","    bef_K = bef_K_0_14 + bef_K_15_29 + bef_K_30_74 + bef_K_75_105,"
-"0","    bef_M = bef_M_0_14 + bef_M_15_29 + bef_M_30_74 + bef_M_75_105,"
-"0","    bef_KM = bef_K + bef_M)"

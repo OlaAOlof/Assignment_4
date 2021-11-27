@@ -1,4 +1,0 @@
-"0","RegHeltLedige_20211003_195641 <- read_excel(\"Downloads/RegHeltLedige_20211003-195641.xlsx\", 
-    col_types = c(\"text\", \"text\", \"numeric\", 
-        \"numeric\"), na = \".\", skip = 3)
-  )"

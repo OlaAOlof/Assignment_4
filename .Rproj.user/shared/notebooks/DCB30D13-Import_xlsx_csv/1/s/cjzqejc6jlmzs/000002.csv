@@ -1,7 +1,0 @@
-"0","HeltLedige <- read_excel("
-"0","  path = ""RegHeltLedige_20211003-195641.xlsx"","
-"0","  col_types = c(""text"", ""text"", ""numeric"", ""numeric""), na = ""."", skip = 3)"
-"2","New names:
-* `` -> ...1
-* `` -> ...2
-"

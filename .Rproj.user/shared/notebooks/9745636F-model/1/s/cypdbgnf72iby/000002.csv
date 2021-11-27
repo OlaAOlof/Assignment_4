@@ -1,5 +1,0 @@
-"0","wf <- bef %>%"
-"0","  group_by(aar) %>%"
-"0","  summarise(bef_K = sum(bef_K),"
-"0","            bef_M = sum(bef_M),"
-"0","            bef_KM = sum(bef_KM))"

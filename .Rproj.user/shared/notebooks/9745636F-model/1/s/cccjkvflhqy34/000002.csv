@@ -1,6 +1,0 @@
-"0","arblos <- arblos %>% "
-"0","    mutate("
-"0","        wf_K = (al_Kvinner/alp_Kvinner)*100,"
-"0","        wf_M = (al_Menn/alp_Menn)*100,"
-"0","        wf_KM = wf_K + wf_M"
-"0","    )"
