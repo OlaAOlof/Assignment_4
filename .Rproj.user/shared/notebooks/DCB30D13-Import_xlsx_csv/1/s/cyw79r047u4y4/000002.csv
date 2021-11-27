@@ -1,0 +1,6 @@
+"0","```r
+# names() gir variabelnavnene
+names(HeltLedige)
+```"
+"1","[1] \"...1\"    \"...2\"    \"2020M03\" \"2020M11\"
+"

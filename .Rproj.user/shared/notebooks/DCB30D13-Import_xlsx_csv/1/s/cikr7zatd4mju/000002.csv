@@ -1,0 +1,24 @@
+"0","```r
+HeltLedige_csv<- read_delim(
+  path = \"Downloads/RegHeltLedige_20211003-195658.csv\",
+  delim = \";\",
+  escape_double = FALSE,
+  col_types = cols(
+    `Registrert helt arbeidsledige 2020M03` = col_number(), 
+    `Registrert helt arbeidsledige 2020M11` = col_number()
+    ), 
+    locale = locale(
+      date_names = \"nb\",
+      decimal_mark = \",\", 
+      grouping_mark = \";\",
+      encoding = \"ISO-8859-1\"
+      ), 
+  na = \"NA\", 
+  trim_ws = TRUE, 
+  skip = 2
+  )
+
+```"
+"1","Error in read_delim(path = \"Downloads/RegHeltLedige_20211003-195658.csv\",  : 
+  unused argument (path = \"Downloads/RegHeltLedige_20211003-195658.csv\")
+"

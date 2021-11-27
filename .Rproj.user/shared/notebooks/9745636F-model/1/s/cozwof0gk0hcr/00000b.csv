@@ -1,0 +1,9 @@
+"0","wf %>% "
+"0","  ggplot(wf, mapping = aes(x = år)) +"
+"0","  geom_line(mapping = aes(y = wf_K/bef_K, color = ""..."")) +"
+"0","  geom_line(mapping = aes(y = wf_M/bef_M, color = ""darkblue"")) +"
+"0","  geom_line(mapping = aes(y = wf_KM/bef_KM)) +"
+"0","  ggtitle(""Arbeidsstyrke relativt til befolkning. Menn blå, kvinner rød og totalt svart."") +"
+"0","  theme(legend.position = ""none"")"
+"2","Error in FUN(X[[i]], ...) : object 'wf_K' not found
+"
